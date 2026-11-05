@@ -6,7 +6,7 @@ include __DIR__ . '/inc/header.inc.php';
 
 <div class="container">
 
-    <?php include __DIR__ . '/inc/menu-esq.inc.php'; ?>
+    
 
     <main>
 
