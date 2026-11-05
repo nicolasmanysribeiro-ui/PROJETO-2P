@@ -1,0 +1,84 @@
+/* tira a margem padrao do navegador e faz a largura contar o padding */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* fundo preto e letra clara no site todo, body em coluna pra empurrar o rodape pra baixo */
+body { font-family: Arial, sans-serif; background: #121212; color: #eee; min-height: 100vh; display: flex; flex-direction: column; }
+a { color: #ddd; }
+
+/* topo: logo, menu e carrinho lado a lado */
+header { background: #000; border-bottom: 1px solid #333; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.logo { width: 150px; }
+nav a { color: #ddd; text-decoration: none; margin: 0 10px; font-size: 1.1rem; }
+nav a:hover { color: #fff; text-decoration: underline; }
+
+/* position relative pra bolinha do contador ficar em cima do icone */
+.carrinho-link { position: relative; display: inline-block; }
+.carrinho-link img { width: 60px; display: block; }
+#contadorCarrinho { position: absolute; top: -5px; right: -8px; background: #fff; color: #000; border-radius: 50%; padding: 2px 7px; font-size: 0.8rem; font-weight: bold; }
+
+/* menu na esquerda 25% e conteudo na direita 75% */
+.container { display: flex; flex: 1; }
+.side { width: 25%; background: #1a1a1a; padding: 15px; border-right: 1px solid #333; }
+main { width: 75%; padding: 15px; }
+.side h2 { font-size: 1.1rem; margin-bottom: 10px; }
+.side form { margin-bottom: 20px; }
+.setor { background: #2a2a2a; padding: 8px; border-radius: 4px; margin: 15px 0 5px; font-size: 1rem; }
+details { border-bottom: 1px solid #333; }
+summary { padding: 8px; cursor: pointer; }
+details ul { list-style: none; padding: 5px 15px 10px; }
+details li a { display: block; padding: 3px 0; text-decoration: none; }
+details li a:hover { color: #fff; text-decoration: underline; }
+
+/* botoes cinza claro com letra preta */
+.btn { background: #ddd; color: #000; border: none; padding: 8px 14px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+.btn:hover { background: #fff; }
+.btn.escuro { background: #333; color: #eee; }
+.btn.escuro:hover { background: #555; }
+.btn.grande { width: 100%; padding: 12px; font-size: 1.1rem; }
+
+/* escondido com important pra ganhar de qualquer outro display */
+.escondido { display: none !important; }
+
+.titulo { background: #222; text-align: center; padding: 12px; border-radius: 6px; margin-bottom: 15px; }
+
+/* carrossel: so o slide com a classe ativo aparece */
+.carrossel { position: relative; margin-bottom: 20px; }
+.slide { display: none; width: 100%; height: 300px; object-fit: cover; border-radius: 6px; }
+.slide.ativo { display: block; }
+.seta { position: absolute; top: 40%; background: rgba(0,0,0,0.6); color: #fff; border: none; font-size: 2rem; padding: 5px 12px; cursor: pointer; }
+.seta.esq { left: 0; }
+.seta.dir { right: 0; }
+
+/* grade de produtos que se ajusta sozinha ao tamanho da tela */
+.produtos { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
+.produto { background: #1e1e1e; border: 1px solid #333; border-radius: 6px; padding: 10px; text-align: center; }
+.produto img { width: 100%; height: 150px; object-fit: contain; }
+.preco-antigo { color: #888; text-decoration: line-through; }
+.preco-novo { color: #fff; font-weight: bold; font-size: 1.2rem; }
+.produto p { margin: 8px 0; }
+.controle-qtd { display: flex; justify-content: center; align-items: center; gap: 15px; }
+
+/* carrinho: formulario na esquerda e resumo na direita */
+.carrinho-grid { display: flex; gap: 15px; align-items: flex-start; flex-wrap: wrap; }
+.coluna-form { flex: 2 1 400px; }
+.resumo { flex: 1 1 250px; position: sticky; top: 10px; }
+.caixa { background: #1e1e1e; border: 1px solid #333; border-radius: 6px; padding: 15px; margin-bottom: 15px; }
+.caixa h3 { margin-bottom: 10px; }
+input, select { width: 100%; padding: 8px; margin: 5px 0 10px; background: #121212; color: #eee; border: 1px solid #444; border-radius: 4px; }
+input[type=radio], input[type=checkbox] { width: auto; margin-right: 6px; }
+.item { display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #333; padding: 8px 0; flex-wrap: wrap; }
+.item img { width: 50px; height: 50px; object-fit: contain; }
+.item-nome { flex: 1; }
+.linha { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; }
+.total { font-size: 1.4rem; font-weight: bold; border-top: 1px solid #444; margin-top: 8px; padding-top: 8px; }
+.erro { margin-top: 10px; font-weight: bold; color: #fff; }
+.cupons button { margin: 5px 5px 0 0; }
+
+footer { background: #000; border-top: 1px solid #333; text-align: center; padding: 15px; }
+
+/* celular: tudo vira uma coluna so */
+@media (max-width: 800px) {
+    .container { flex-direction: column; }
+    .side, main { width: 100%; }
+    .slide { height: 160px; }
+}
