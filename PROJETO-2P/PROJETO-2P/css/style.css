@@ -1,0 +1,155 @@
+/* tira a margem padrao do navegador e faz a largura contar o padding */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* fundo preto e letra clara no site todo, body em coluna pra empurrar o rodape pra baixo */
+body { font-family: Arial, sans-serif; background: #121212; color: #eee; min-height: 100vh; display: flex; flex-direction: column; line-height: 1.4; }
+a { color: #ddd; }
+h2 { margin-bottom: 12px; }
+h3 { margin: 14px 0 8px; }
+label { display: block; margin-top: 6px; font-size: 0.9rem; color: #bbb; }
+
+/* escondido com important pra ganhar de qualquer outro display */
+.escondido { display: none !important; }
+
+/* topo centralizado: logo, menu e sacola */
+header { background: #000; border-bottom: 1px solid #333; }
+.topo { max-width: 1200px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.logo { width: 140px; display: block; }
+nav a { color: #ccc; text-decoration: none; margin: 0 10px; }
+nav a:hover { color: #fff; text-decoration: underline; }
+.carrinho-link { text-decoration: none; background: #222; border: 1px solid #444; border-radius: 999px; padding: 8px 16px; font-weight: bold; }
+.carrinho-link:hover { background: #333; }
+#contadorCarrinho { background: #fff; color: #000; border-radius: 999px; padding: 1px 8px; margin-left: 4px; font-size: 0.85rem; }
+
+/* conteudo centralizado: menu na esquerda e produtos na direita */
+.container { max-width: 1200px; width: 100%; margin: 0 auto; padding: 20px; flex: 1; display: flex; gap: 20px; align-items: flex-start; }
+.side { width: 260px; flex-shrink: 0; background: #1a1a1a; padding: 15px; border: 1px solid #333; border-radius: 12px; }
+main { flex: 1; min-width: 0; }
+.side h2 { font-size: 1.1rem; }
+.side form { margin-bottom: 12px; }
+.side input { margin-bottom: 8px; }
+.link-promo { display: block; background: #262626; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-bottom: 5px; }
+.setor { background: #262626; padding: 8px; border-radius: 8px; margin: 14px 0 5px; font-size: 0.85rem; color: #bbb; }
+details { border-bottom: 1px solid #2a2a2a; }
+summary { padding: 8px; cursor: pointer; }
+details ul { list-style: none; padding: 2px 15px 10px; }
+details li a { display: block; padding: 4px 0; text-decoration: none; color: #bbb; }
+details li a:hover, details li a.atual { color: #fff; font-weight: bold; }
+
+/* botoes cinza claro com letra preta */
+.btn { background: #e8e8e8; color: #000; border: none; padding: 10px 16px; border-radius: 8px; cursor: pointer; font-weight: bold; text-decoration: none; display: inline-block; font-size: 0.95rem; }
+.btn:hover { background: #fff; }
+.btn.escuro { background: #2c2c2c; color: #eee; }
+.btn.escuro:hover { background: #444; }
+.btn.grande { padding: 14px 20px; font-size: 1.05rem; flex: 1; }
+.btn small { display: block; font-weight: normal; font-size: 0.75rem; }
+
+input[type=text], input[type=email], input[type=search] { width: 100%; padding: 10px; margin: 4px 0 8px; background: #121212; color: #eee; border: 1px solid #444; border-radius: 8px; font-size: 1rem; }
+input:focus { outline: none; border-color: #fff; }
+input[type=radio], input[type=checkbox] { margin-right: 8px; accent-color: #fff; }
+
+.titulo { background: #1e1e1e; border: 1px solid #333; text-align: center; padding: 12px; border-radius: 12px; margin-bottom: 15px; }
+.vazio { text-align: center; padding: 30px; color: #aaa; }
+.emoji-grande { font-size: 3.5rem; }
+
+/* carrossel: so o slide com a classe ativo aparece */
+.carrossel { position: relative; margin-bottom: 20px; }
+.slide { display: none; width: 100%; height: 280px; object-fit: cover; border-radius: 12px; }
+.slide.ativo { display: block; }
+.seta { position: absolute; top: 40%; background: rgba(0,0,0,0.6); color: #fff; border: none; font-size: 2rem; padding: 5px 12px; cursor: pointer; }
+.seta.esq { left: 0; border-radius: 0 8px 8px 0; }
+.seta.dir { right: 0; border-radius: 8px 0 0 8px; }
+
+/* grade de produtos que se ajusta sozinha ao tamanho da tela */
+.produtos { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 15px; }
+.produto { position: relative; background: #1e1e1e; border: 1px solid #333; border-radius: 12px; padding: 14px; text-align: center; display: flex; flex-direction: column; gap: 8px; }
+.produto:hover { border-color: #777; }
+.produto h3 { margin: 0; font-size: 0.95rem; flex: 1; }
+.emoji { font-size: 3.5rem; background: #2a2a2a; border-radius: 12px; padding: 14px 0; }
+.selo { position: absolute; top: 10px; left: 10px; background: #fff; color: #000; font-weight: bold; font-size: 0.75rem; padding: 3px 8px; border-radius: 999px; }
+.precos { display: flex; flex-direction: column; }
+.preco-antigo { color: #888; text-decoration: line-through; font-size: 0.85rem; }
+.preco-novo { color: #fff; font-weight: bold; font-size: 1.25rem; }
+
+/* controle de quantidade em formato de pilula */
+.stepper { display: inline-flex; align-items: center; justify-content: center; border: 1px solid #555; border-radius: 999px; }
+.stepper button { background: none; border: none; color: #eee; width: 34px; height: 34px; font-size: 1.2rem; cursor: pointer; }
+.stepper button:hover { color: #fff; background: #333; border-radius: 50%; }
+.stepper span { min-width: 26px; text-align: center; font-weight: bold; }
+
+/* barra fixa embaixo, igual ifood, aparece quando tem item na sacola */
+.barra-sacola { position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%); width: calc(100% - 30px); max-width: 600px; background: #e8e8e8; color: #000; border-radius: 999px; padding: 14px 22px; display: flex; justify-content: space-between; text-decoration: none; font-weight: bold; box-shadow: 0 4px 20px rgba(0,0,0,0.6); z-index: 10; }
+.barra-sacola:hover { background: #fff; }
+
+footer { background: #000; border-top: 1px solid #333; text-align: center; padding: 15px; margin-top: 70px; }
+
+/* pagina do carrinho, centralizada e sem menu lateral pra nao distrair */
+.pagina-carrinho { max-width: 1000px; width: 100%; margin: 0 auto; padding: 20px; flex: 1; }
+.etapas { list-style: none; display: flex; gap: 8px; margin-bottom: 20px; }
+.etapas li { flex: 1; background: #1a1a1a; border: 1px solid #333; border-radius: 999px; padding: 8px; text-align: center; color: #777; font-size: 0.9rem; }
+.etapas li b { background: #333; border-radius: 50%; padding: 1px 7px; margin-right: 4px; }
+.etapas li.feita { color: #ccc; }
+.etapas li.ativa { background: #e8e8e8; color: #000; font-weight: bold; }
+.etapas li.ativa b { background: #000; color: #fff; }
+
+.carrinho-grid { display: grid; grid-template-columns: 1fr 330px; gap: 20px; align-items: start; }
+.caixa { background: #1c1c1c; border: 1px solid #333; border-radius: 12px; padding: 18px; margin-bottom: 15px; }
+.resumo { position: sticky; top: 15px; }
+.dica { color: #999; font-size: 0.85rem; margin: 8px 0; }
+.erro { color: #fff; background: #333; border-radius: 8px; font-weight: bold; }
+.erro:not(:empty) { padding: 10px; margin: 10px 0; }
+.botoes { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 15px; }
+.duas-colunas { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+/* linha de item da sacola */
+.item { display: grid; grid-template-columns: 56px 1fr auto auto 30px; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #2c2c2c; }
+.emoji-box { font-size: 2rem; background: #2a2a2a; border-radius: 10px; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; }
+.item-info { display: flex; flex-direction: column; }
+.item-info span { color: #999; font-size: 0.85rem; }
+.item-total { min-width: 80px; text-align: right; }
+.remover { background: none; border: none; color: #999; cursor: pointer; font-size: 1rem; }
+.remover:hover { color: #fff; }
+
+/* cupom escondido ate a pessoa clicar */
+.cupom { margin-top: 15px; border: 1px dashed #555; border-radius: 10px; }
+.cupom summary { padding: 12px; font-weight: bold; }
+.cupom-corpo { padding: 0 12px 12px; }
+.cupons { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+
+/* cartao clicavel de escolha, a borda branca mostra qual ta marcado */
+.opcao { display: flex; align-items: center; gap: 12px; border: 1px solid #444; border-radius: 10px; padding: 12px; margin: 0 0 10px; cursor: pointer; color: #eee; font-size: 1rem; }
+.opcao:hover { border-color: #888; }
+.opcao:has(input:checked) { border-color: #fff; background: #262626; }
+.opcao input { margin: 0; }
+.opcao .icone { font-size: 1.6rem; }
+.opcao .texto { flex: 1; display: flex; flex-direction: column; }
+.opcao small { color: #999; font-size: 0.8rem; }
+.tag { background: #333; border-radius: 999px; padding: 3px 10px; font-size: 0.8rem; font-weight: bold; white-space: nowrap; }
+
+/* resumo e barra de entrega gratis */
+.frete-info { background: #262626; border-radius: 10px; padding: 10px; margin-bottom: 10px; font-size: 0.85rem; }
+.barra { background: #444; height: 8px; border-radius: 999px; overflow: hidden; margin-top: 8px; }
+.barra div { height: 100%; width: 0; background: #fff; transition: width 0.3s; }
+.linha { display: flex; justify-content: space-between; gap: 10px; padding: 5px 0; }
+.direita { text-align: right; font-size: 0.85rem; }
+.total { font-size: 1.3rem; font-weight: bold; border-top: 1px solid #444; margin-top: 8px; padding-top: 10px; }
+
+/* tela de pedido feito */
+.sucesso { text-align: center; margin-bottom: 15px; }
+.tracker { display: flex; gap: 8px; margin: 15px 0; }
+.passo { flex: 1; background: #1a1a1a; border: 1px solid #333; border-radius: 10px; padding: 10px; text-align: center; color: #777; font-size: 0.85rem; }
+.passo.ativo { border-color: #fff; color: #fff; background: #262626; }
+.pix-box { background: #262626; border-radius: 10px; padding: 15px; text-align: center; margin-bottom: 10px; }
+.pix-codigo { word-break: break-all; background: #121212; padding: 10px; border-radius: 8px; margin: 10px 0; font-size: 0.8rem; color: #bbb; }
+
+/* celular: tudo vira uma coluna so */
+@media (max-width: 800px) {
+    .container { flex-direction: column; }
+    .side { width: 100%; }
+    .slide { height: 160px; }
+    .carrinho-grid { grid-template-columns: 1fr; }
+    .resumo { position: static; order: -1; }
+    .item { grid-template-columns: 56px 1fr auto 30px; }
+    .item-total { grid-column: 2 / 4; text-align: left; }
+    .etapas li { font-size: 0.75rem; padding: 6px 2px; }
+}
